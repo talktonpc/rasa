@@ -13,7 +13,7 @@ from rasa.constants import RESULTS_FILE, NUMBER_OF_TRAINING_STORIES_FILE
 from rasa.exceptions import ModelNotFound
 from rasa.shared.constants import DEFAULT_RESULTS_PATH
 import rasa.shared.nlu.training_data.loading
-from rasa.shared.importers.autoconfig import TrainingType
+from rasa.shared.data import TrainingType
 from rasa.shared.nlu.training_data.training_data import TrainingData
 import rasa.model
 
@@ -117,10 +117,7 @@ async def test_core_models(
     from rasa.core.test import compare_models
 
     await compare_models(
-        models,
-        stories,
-        output,
-        use_conversation_test_files=use_conversation_test_files,
+        models, stories, output, use_conversation_test_files=use_conversation_test_files
     )
 
 
@@ -177,11 +174,7 @@ async def test_core(
     )
 
     await core_test(
-        stories,
-        _agent,
-        e2e=use_conversation_test_files,
-        out_directory=output,
-        **kwargs,
+        stories, _agent, e2e=use_conversation_test_files, out_directory=output, **kwargs
     )
 
 
