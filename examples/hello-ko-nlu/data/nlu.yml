@@ -1,0 +1,44 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - 안녕
+    - 안녕하세요
+    - 하이
+    - 헬로
+
+- intent: goodbye
+  examples: |
+    - 잘가
+    - 안녕히가세요
+
+- intent: affirm
+  examples: |
+    - 예
+    - 응
+    - 예스
+
+- intent: deny
+  examples: |
+    - 아니
+    - 아니야
+    - 아닙니다
+    - 노
+
+- intent: mood_great
+  examples: |
+    - 좋아
+    - 그레이트
+    - 굿
+
+- intent: mood_unhappy
+  examples: |
+    - 슬픈날이었어요
+    - 나는 슬프다
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - 누구세요
+    - 누구야
