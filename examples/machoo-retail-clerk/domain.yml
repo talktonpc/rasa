@@ -1,0 +1,88 @@
+version: "3.0"
+
+intents:
+  - initiate
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+
+entities:
+  - name
+  - ai
+  - speciality
+
+slots:
+  name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: name
+  ai:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: ai
+  speciality:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: speciality
+
+responses:
+  utter_initiate:
+  - text: "{name}님, 안녕하세요! 저는 '{speciality}' 분야에 최적화 되어 있는 봇 '{ai}'입니다. 궁금한 것이 있으면 저에게 물어 보세요."
+    buttons:
+      - title: "엄청 좋아요."
+        payload: /mood_great
+      - title: "너무 슬퍼요."
+        payload: /mood_sad
+
+  utter_greet:
+  - text: "안녕하세요! 잘 지내고 있나요?"
+  - text: "안녕! 나도 잘 지내고 있었어."
+
+  utter_cheer_up:
+  - text: "이런거면 위로가 될까요?"
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA_8FRoRCAoxDx3g_rhTNqm3ZWDfXGAympSw&usqp=CAU"
+
+  - text: "저런, 제가 어떻게 위로를 해야 할지 ..."
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7ribFvW4FKPtqvhe7v0J_289lyoKiC8vyNA&usqp=CAU"
+  
+  utter_did_that_help:
+  - text: "도움이 되었나요?"
+    buttons:
+      - title: "예"
+        payload: /affirm
+      - title: "아니오"
+        payload: /deny
+  - text: "도움이 되었니?"
+    buttons:
+      - title: "응, 많이 도움이 됐어. 고마워!"
+        payload: /affirm
+      - title: "아니, 별로 도움이 되지 않아."
+        payload: /deny
+  - text: "또 필요하면 이야기 하세요!"
+
+  utter_happy:
+  - text: "정말요? 오늘은 정말 좋으셨군요!"
+  - text: "좋으셨나봐요? 나도 좋았어요."
+  - text: "오우~~ 그레이트~~~, 정말 좋겠어요."
+
+  utter_goodbye:
+  - text: "안녕히 계세요"
+  - text: "잘가"
+  - text: "바이"
+
+  utter_iamabot:
+  - text: "저는 봇입니다."
+  - text: "저는 Rasa가 제공하는 봇입니다."
+  - text: "나는 AI예요."
+  - text: "나? 마추라고 해!"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: false
